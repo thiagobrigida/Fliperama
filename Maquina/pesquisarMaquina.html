@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Inicio</title>
+  <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+  <script src="bootstrap/js/popper.min.js"></script>
+  <script src="bootstrap/js/bootstrap.js"></script>
+  <script src="bootstrap/js/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $(function () {
+        $("#menu").load("navbar.html");
+      });
+    });
+  </script>
+</head>
+
+<body style="font-family: sans-serif; text-align: center; margin-top: 50px; background-color:grey;">
+    <div class="container">
+      <div id="menu"></div>
+    </div>
+    <div class="container">
+        <?php
+            require_once '../scripts/init.php';
+            $titulo = isset($_POST['titulo']) ? $_POST ['titulo']:null;
+            if(empty($titulo)){
+                header('Location:../msg/msgErro.html');
+            }
+            $pesquisa = '%'.$titulo.'%';
+            $PDO = db_connect();
+            $sql = "SELECT L.id, L.titulo, L.autor, L.sessao_id, S.descricao FROM
+            livro as L INNER JOIN sessao as S on L.sessao_id = S.id WHERE upper(titulo) 
+            like :titulo ORDER BY L.titulo ASC";
+            $stmt = $PDO -> prepare($sql);
+            $stmt -> execute([':titulo' => $pesquisa]);
+        ?>
+    </div>
+</body>
+</html>
