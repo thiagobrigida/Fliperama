@@ -1,5 +1,5 @@
 <?php
-require_once '../scripts/init.php';
+require_once '../init.php';
 
 $PDO = db_connect();
 $sql = "SELECT * FROM Cliente ORDER BY nome ASC";

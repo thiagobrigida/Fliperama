@@ -1,5 +1,5 @@
 <?php
-require_once '../scripts/init.php';
+require_once '../init.php';
 
 // Recebendo os dados do formulário
 $nome = isset($_POST['nome']) ? $_POST['nome'] : '';

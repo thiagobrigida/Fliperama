@@ -1,5 +1,5 @@
 <?php
-require_once '../scripts/init.php';
+require_once '../init.php';
 
 $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 

@@ -1,5 +1,5 @@
 <?php
-require_once '../scripts/init.php';
+require_once '../init.php';
 
 $id = isset($_POST['id_cliente']) ? (int) $_POST['id_cliente'] : 0;
 $nome = $_POST['nome'];
