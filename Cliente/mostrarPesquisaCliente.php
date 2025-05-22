@@ -1,5 +1,5 @@
 <?php
-require_once '../scripts/init.php';
+require_once '../init.php';
 
 $nome = isset($_POST['nome']) ? $_POST['nome'] : null;
 
