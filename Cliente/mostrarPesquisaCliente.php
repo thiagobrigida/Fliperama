@@ -71,6 +71,7 @@ $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </table>
   <?php else: ?>
     <p>Nenhum cliente encontrado com esse nome.</p>
+    <a href="../index.html" class="btn btn-primary">Voltar para o Início</a>
   <?php endif; ?>
   </div>
 </body>

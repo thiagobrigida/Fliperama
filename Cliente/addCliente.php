@@ -23,7 +23,11 @@ try {
     $stmt->execute();
 
     echo "Cliente cadastrado com sucesso!";
+    echo '<br><button onclick="window.location.href=\'../index.html\'">Voltar para o Início</button>';
+;
 } catch (PDOException $e) {
     echo "Erro ao cadastrar cliente: " . $e->getMessage();
+    echo '<br><button onclick="window.location.href=\'../index.html\'">Voltar para o Início</button>';
+
 }
 ?>
