@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Inicio</title>
+  <title>Pesquisar Maquinas</title>
   <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
   <script src="bootstrap/js/popper.min.js"></script>
   <script src="bootstrap/js/bootstrap.js"></script>
@@ -17,25 +17,21 @@
   </script>
 </head>
 
-<body style="font-family: sans-serif; text-align: center; margin-top: 50px; background-color:grey;">
-    <div class="container">
-      <div id="menu"></div>
-    </div>
-    <div class="container">
-        <?php
-            require_once '../scripts/init.php';
-            $titulo = isset($_POST['titulo']) ? $_POST ['titulo']:null;
-            if(empty($titulo)){
-                header('Location:../msg/msgErro.html');
-            }
-            $pesquisa = '%'.$titulo.'%';
-            $PDO = db_connect();
-            $sql = "SELECT L.id, L.titulo, L.autor, L.sessao_id, S.descricao FROM
-            livro as L INNER JOIN sessao as S on L.sessao_id = S.id WHERE upper(titulo) 
-            like :titulo ORDER BY L.titulo ASC";
-            $stmt = $PDO -> prepare($sql);
-            $stmt -> execute([':titulo' => $pesquisa]);
-        ?>
-    </div>
+<style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+<body style="font-family: sans-serif; text-align: center; margin-top: 10px;">
+      <div class="container"; id="menu"></div>
+  <h2>Pesquisar Máquina por Número de Série</h2>
+  <form action="mostrarPesquisaMaquina.php" method="post">
+    <label for="numero_serie">Número de Série:</label>
+    <input type="text" name="numero_serie" required>
+    <input type="submit" value="Pesquisar">
+  </form>
+     <div class="container"><a href="../index.html" class="btn btn-primary">Voltar para o Início</a></div>
 </body>
 </html>

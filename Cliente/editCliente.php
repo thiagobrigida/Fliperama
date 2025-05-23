@@ -52,7 +52,7 @@ try {
 
 <style>
     body {
-      background-color: black;
+      background-color: gray;
       color: white;
       font-family: Arial, sans-serif;
     }
