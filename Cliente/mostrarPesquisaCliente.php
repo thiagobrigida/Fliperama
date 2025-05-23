@@ -27,7 +27,7 @@ $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <head>
   <meta charset="UTF-8">
-  <title>Mostrar Pesquisa de Cliente</title>
+  <title>Resultado da Pesquisa</title>
   <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
   <script src="bootstrap/js/popper.min.js"></script>
   <script src="bootstrap/js/bootstrap.js"></script>
@@ -41,10 +41,15 @@ $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </script>
 </head>
 
-<body style="font-family: sans-serif; text-align: center; margin-top: 50px; background-color: rgb(106, 106, 106);">
-    <div class="container">
-      <div id="menu"></div>
-    </div>
+<style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+<body style="font-family: sans-serif; text-align: center; margin-top: 10px;">
+      <div class="container"; id="menu"></div>
   <h2>Resultado da Pesquisa</h2>
     <div class="container">
   <?php if (count($clientes) > 0): ?>

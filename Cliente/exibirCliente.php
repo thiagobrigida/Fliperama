@@ -27,14 +27,19 @@ $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </script>
 </head>
 
-<body style="font-family: sans-serif; text-align: center; margin-top: 50px; background-color:gray;">
-    <div class="container">
-      <div id="menu"></div>
-    </div>
+<style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+<body style="font-family: sans-serif; text-align: center; margin-top: 10px;">
+      <div class="container"; id="menu"></div>
 
     <h2>Clientes Cadastrados</h2>
     <div class="container">
-    <table border="1" cellpadding="10">
+    <table border="1" cellpadding="10" style="color: white;">
         <tr>
             <th>ID</th>
             <th>Nome</th>
@@ -56,5 +61,6 @@ $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php endforeach; ?>
   </table>
   </div>
+  <div class="container"><a href="../index.html" class="btn btn-primary">Voltar para o Início</a></div>
 </body>
 </html>
