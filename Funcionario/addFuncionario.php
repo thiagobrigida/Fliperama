@@ -1,34 +1,30 @@
 <?php
 require_once '../init.php';
 
-// Recebendo os dados do formulário
-$nome_func = isset($_POST['nome_func']) ? $_POST['nome_func'] : '';
-$turno = isset($_POST['turno']) ? $_POST['turno'] : '';
-$cargo = isset($_POST['cargo']) ? $_POST['cargo'] : '';
+$nome = $_POST['nome'];
+$turno = $_POST['turno'];
+$cargo = $_POST['cargo'];
 
-// Validação simples
-if (empty($nome_func) || empty($turno) || empty($cargo)) {
+if (empty($nome) || empty($turno) || empty($cargo)) {
     echo "Preencha todos os campos!";
     exit;
 }
 
 try {
     $PDO = db_connect();
-    $sql = "INSERT INTO Funcionario (nome_func, turno, cargo) 
-            VALUES (:nome_func, :turno, :cargo)";
+    $sql = "INSERT INTO Funcionario (nome, turno, cargo) VALUES (:nome, :turno, :cargo)";
     $stmt = $PDO->prepare($sql);
-    $stmt->bindParam(':nome_func', $nome_func);
-    $stmt->bindParam(':turno', $turno);
-    $stmt->bindParam(':cargo', $cargo);
-    $stmt->execute();
-
-    echo "Funcionario cadastrado com sucesso!";
+    $stmt->execute([
+        ':nome' => $nome,
+        ':turno' => $turno,
+        ':cargo' => $cargo
+    ]);
+    echo "Funcionário cadastrado com sucesso!";
     echo '<br><button onclick="window.location.href=\'../index.html\'">Voltar para o Início</button>';
-;
+
 } catch (PDOException $e) {
-    echo "Erro ao cadastrar funcionário: " . $e->getMessage();
+    echo "Erro ao cadastrar Funcionário: " . $e->getMessage();
     echo '<br><button onclick="window.location.href=\'../index.html\'">Voltar para o Início</button>';
-
 }
 ?>
 
@@ -37,7 +33,7 @@ try {
 
 <head>
   <meta charset="UTF-8">
-  <title>Adicionar Funcionário</title>
+  <title>Adicionar Funcionario</title>
   <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
   <script src="bootstrap/js/popper.min.js"></script>
   <script src="bootstrap/js/bootstrap.js"></script>
@@ -60,6 +56,5 @@ try {
   </style>
 <body style="font-family: sans-serif; text-align: center; margin-top: 10px;">
       <div class="container"; id="menu"></div>
-    <div class="container"><a href="../index.html" class="btn btn-primary">Voltar para o Início</a></div>
 </body>
 </html>

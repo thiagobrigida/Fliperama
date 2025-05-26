@@ -1,5 +1,5 @@
 <?php
-require_once '../scripts/init.php';
+require_once '../init.php';
 
 $PDO = db_connect();
 $sql = "SELECT * FROM Jogo ORDER BY nome ASC";
@@ -53,7 +53,7 @@ $jogos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <td><?= $jogo['categoria'] ?></td>
         <td><?= $jogo['faixa_etaria'] ?>+</td>
         <td>
-          <a href="formEditJogo.html?id=<?= $jogo['id_jogo'] ?>">Editar</a> |
+          <a href="formEditJogo.php?id=<?= $jogo['id_jogo'] ?>">Editar</a> |
           <a href="deleteJogo.php?id=<?= $jogo['id_jogo'] ?>" onclick="return confirm('Deseja excluir este jogo?')">Excluir</a>
         </td>
       </tr>

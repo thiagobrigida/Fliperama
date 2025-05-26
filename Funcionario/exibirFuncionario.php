@@ -2,7 +2,7 @@
 require_once '../init.php';
 
 $PDO = db_connect();
-$sql = "SELECT * FROM Funcionario ORDER BY nome_func ASC";
+$sql = "SELECT * FROM Funcionario ORDER BY nome ASC";
 $stmt = $PDO->prepare($sql);
 $stmt->execute();
 $funcionarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -50,7 +50,7 @@ $funcionarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php foreach ($funcionarios as $funcionario): ?>
       <tr>
         <td><?= $funcionario['id_funcionario'] ?></td>
-        <td><?= $funcionario['nome_func'] ?></td>
+        <td><?= $funcionario['nome'] ?></td>
         <td><?= $funcionario['turno'] ?></td>
         <td><?= $funcionario['cargo'] ?></td>
         <td>

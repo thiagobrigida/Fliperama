@@ -1,5 +1,5 @@
 <?php
-require_once '../scripts/init.php';
+require_once '../init.php';
 
 $id = $_POST['id_jogo'];
 $nome = $_POST['nome'];
@@ -57,6 +57,5 @@ try {
   </style>
 <body style="font-family: sans-serif; text-align: center; margin-top: 10px;">
       <div class="container"; id="menu"></div>
-    <div class="container"><a href="../index.html" class="btn btn-primary">Voltar para o Início</a></div>
 </body>
 </html>

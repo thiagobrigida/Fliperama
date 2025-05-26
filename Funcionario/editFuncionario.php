@@ -2,20 +2,20 @@
 require_once '../init.php';
 
 $id = isset($_POST['id_funcionario']) ? (int) $_POST['id_funcionario'] : 0;
-$nome_func = $_POST['nome_func'];
+$nome = $_POST['nome'];
 $turno = $_POST['turno'];
 $cargo = $_POST['cargo'];
 
-if (empty($nome_func) || empty($turno) || empty($cargo)) {
-    echo "Preencha todos os campos!";
-    exit;
+if (empty($nome) || empty($turno) || empty($cargo)) {
+  echo "Preencha todos os campos!";
+  exit;
 }
 
 try {
     $PDO = db_connect();
-    $sql = "UPDATE Funcionario SET nome_func = :nome_func, turno = :turno, cargo = :cargo WHERE id_funcionario = :id";
+    $sql = "UPDATE Funcionario SET nome = :nome, turno = :turno, cargo = :cargo WHERE id_funcionario = :id";
     $stmt = $PDO->prepare($sql);
-    $stmt->bindParam(':nome_func', $nome_func);
+    $stmt->bindParam(':nome', $nome);
     $stmt->bindParam(':turno', $turno);
     $stmt->bindParam(':cargo', $cargo);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -59,6 +59,5 @@ try {
   </style>
 <body style="font-family: sans-serif; text-align: center; margin-top: 10px;">
       <div class="container"; id="menu"></div>
-    <div class="container"><a href="../index.html" class="btn btn-primary">Voltar para o Início</a></div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-require_once '../scripts/init.php';
+require_once '../init.php';
 
 $PDO = db_connect();
 $sql = "SELECT Maquina.*, Jogo.nome AS nome_jogo 
@@ -11,7 +11,7 @@ $stmt->execute();
 $maquinas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -57,7 +57,7 @@ $maquinas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <td><?= $maq['nome_jogo'] ?></td>
         <td><?= $maq['estado'] ?></td>
         <td>
-          <a href="formEditMaquina.html?id=<?= $maq['id_maquina'] ?>">Editar</a> |
+          <a href="formEditMaquina.php?id=<?= $maq['id_maquina'] ?>">Editar</a> |
           <a href="deleteMaquina.php?id=<?= $maq['id_maquina'] ?>" onclick="return confirm('Deseja excluir esta máquina?')">Excluir</a>
         </td>
       </tr>

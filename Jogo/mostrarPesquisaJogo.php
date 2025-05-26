@@ -1,5 +1,5 @@
 <?php
-require_once '../scripts/init.php';
+require_once '../init.php';
 
 $nome = isset($_POST['nome']) ? $_POST['nome'] : '';
 
@@ -47,7 +47,7 @@ $jogos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body style="font-family: sans-serif; text-align: center; margin-top: 10px;">
       <div class="container"; id="menu"></div>
   <h2>Resultado da Pesquisa de Jogos</h2>
-
+    <div class="container"></div>
   <?php if (count($jogos) > 0): ?>
     <table border="1" cellpadding="10">
       <tr>
@@ -64,7 +64,7 @@ $jogos = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <td><?= $jogo['categoria'] ?></td>
           <td><?= $jogo['faixa_etaria'] ?>+</td>
           <td>
-            <a href="formEditJogo.html?id=<?= $jogo['id_jogo'] ?>">Editar</a> |
+            <a href="formEditJogo.php?id=<?= $jogo['id_jogo'] ?>">Editar</a> |
             <a href="deleteJogo.php?id=<?= $jogo['id_jogo'] ?>">Excluir</a>
           </td>
         </tr>

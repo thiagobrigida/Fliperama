@@ -1,25 +1,25 @@
 <?php
 require_once '../init.php';
 
-$nome_func = isset($_POST['nome_func']) ? $_POST['nome_func'] : null;
+$nome = isset($_POST['nome']) ? $_POST['nome'] : null;
 
-if (empty($nome_func)) {
-    header('Location: ../msg/msgErro.html'); // ou exibir uma mensagem de erro simples
+if (empty($nome)) {
+    header('Location: ../msg/msgErro.html');
     exit;
 }
 
-$pesquisa = '%' . strtoupper($nome_func) . '%';
+$pesquisa = '%' . strtoupper($nome) . '%';
 
 $PDO = db_connect();
-$sql = "SELECT id_funcionario, nome_func, turno, cargo 
+$sql = "SELECT id_funcionario, nome, turno, cargo 
         FROM Funcionario 
-        WHERE UPPER(nome_func) LIKE :nome_func 
-        ORDER BY nome_func ASC";
+        WHERE UPPER(nome) LIKE :nome 
+        ORDER BY nome ASC";
 
 $stmt = $PDO->prepare($sql);
-$stmt->bindValue(':nome_func', $pesquisa);
+$stmt->bindValue(':nome', $pesquisa);
 $stmt->execute();
-$funcionario = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$funcionarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -64,20 +64,20 @@ $funcionario = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <?php foreach ($funcionarios as $funcionario): ?>
         <tr>
           <td><?= $funcionario['id_funcionario'] ?></td>
-          <td><?= $funcionario['nome_func'] ?></td>
+          <td><?= $funcionario['nome'] ?></td>
           <td><?= $funcionario['turno'] ?></td>
           <td><?= $funcionario['cargo'] ?></td>
           <td>
             <a href="formEditFuncionario.php?id=<?= $funcionario['id_funcionario'] ?>">Editar</a> |
-            <a href="deleteFuncionario.php?id=<?= $funcionario['id_funcionario'] ?>" onclick="return confirm('Deseja realmente excluir?')">Excluir</a>
+            <a href="deleteFuncionario.php?id=<?= $funcionario['id_funcionario'] ?>">Excluir</a>
           </td>
         </tr>
       <?php endforeach; ?>
     </table>
   <?php else: ?>
     <p>Nenhum funcionario encontrado com esse nome.</p>
-    <a href="../index.html" class="btn btn-primary">Voltar para o Início</a>
   <?php endif; ?>
   </div>
+  <div class="container"><a href="../index.html" class="btn btn-primary">Voltar para o Início</a></div>
 </body>
 </html>

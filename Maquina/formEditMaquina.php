@@ -1,16 +1,17 @@
 <?php
-require_once '../scripts/init.php';
+require_once '../init.php';
 
 $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
+
 $PDO = db_connect();
-$sql = "SELECT * FROM Jogo WHERE id_jogo = :id";
+$sql = "SELECT * FROM Maquina WHERE id_maquina = :id";
 $stmt = $PDO->prepare($sql);
 $stmt->bindParam(':id', $id);
 $stmt->execute();
-$jogo = $stmt->fetch(PDO::FETCH_ASSOC);
+$maquina = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if (!$jogo) {
-    echo "Jogo não encontrado.";
+if (!$maquina) {
+    echo "Máquina não encontrada.";
     exit;
 }
 ?>
@@ -20,7 +21,7 @@ if (!$jogo) {
 
 <head>
   <meta charset="UTF-8">
-  <title>Editar Jogos</title>
+  <title>Editar Maquina</title>
   <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
   <script src="bootstrap/js/popper.min.js"></script>
   <script src="bootstrap/js/bootstrap.js"></script>
@@ -43,21 +44,21 @@ if (!$jogo) {
   </style>
 <body style="font-family: sans-serif; text-align: center; margin-top: 10px;">
       <div class="container"; id="menu"></div>
-  <h2>Editar Jogo</h2>
-  <form action="editJogo.php" method="post">
-    <input type="hidden" name="id_jogo" value="<?= $jogo['id_jogo'] ?>">
+  <h2>Editar Máquina</h2>
+  <form action="editMaquina.php" method="post">
+    <input type="hidden" name="id_maquina" value="<?= $maquina['id_maquina'] ?>">
 
-    <label for="nome">Nome do Jogo:</label><br>
-    <input type="text" name="nome" value="<?= $jogo['nome'] ?>" required><br><br>
+    <label for="numero_serie">Número de Série:</label><br>
+    <input type="text" name="numero_serie" value="<?= $maquina['numero_serie'] ?>" required><br><br>
 
-    <label for="categoria">Categoria:</label><br>
-    <input type="text" name="categoria" value="<?= $jogo['categoria'] ?>" required><br><br>
+    <label for="id_jogo">ID do Jogo:</label><br>
+    <input type="number" name="id_jogo" value="<?= $maquina['id_jogo'] ?>" required><br><br>
 
-    <label for="faixa_etaria">Faixa Etária:</label><br>
-    <input type="text" name="faixa_etaria" value="<?= $jogo['faixa_etaria'] ?>" required><br><br>
+    <label for="estado">Estado:</label><br>
+    <input type="text" name="estado" value="<?= $maquina['estado'] ?>" required><br><br>
 
     <input type="submit" value="Salvar Alterações">
   </form>
-      <div class="container"><a href="../index.html" class="btn btn-primary">Voltar para o Início</a></div>
+   <div class="container"><a href="../index.html" class="btn btn-primary">Voltar para o Início</a></div>
 </body>
 </html>

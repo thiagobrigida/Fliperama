@@ -1,5 +1,5 @@
 <?php
-require_once '../scripts/init.php';
+require_once '../init.php';
 
 $numero_serie = $_POST['numero_serie'];
 $id_jogo = $_POST['id_jogo'];
@@ -25,6 +25,7 @@ try {
     echo "Erro ao cadastrar máquina: " . $e->getMessage();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -52,8 +53,9 @@ try {
       font-family: Arial, sans-serif;
     }
   </style>
+  
 <body style="font-family: sans-serif; text-align: center; margin-top: 10px;">
       <div class="container"; id="menu"></div>
-    <div class="container"><a href="../index.html" class="btn btn-primary">Voltar para o Início</a></div>
+      <div class="container"><a href="../index.html" class="btn btn-primary">Voltar para o Início</a></div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-require_once '../scripts/init.php';
+require_once '../init.php';
 
 $numero_serie = isset($_POST['numero_serie']) ? $_POST['numero_serie'] : '';
 
@@ -69,7 +69,7 @@ $maquinas = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <td><?= $maq['nome_jogo'] ?></td>
           <td><?= $maq['estado'] ?></td>
           <td>
-            <a href="formEditMaquina.html?id=<?= $maq['id_maquina'] ?>">Editar</a> |
+            <a href="formEditMaquina.php?id=<?= $maq['id_maquina'] ?>">Editar</a> |
             <a href="deleteMaquina.php?id=<?= $maq['id_maquina'] ?>">Excluir</a>
           </td>
         </tr>
