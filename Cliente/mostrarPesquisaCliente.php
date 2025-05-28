@@ -4,7 +4,7 @@ require_once '../init.php';
 $nome = isset($_POST['nome']) ? $_POST['nome'] : null;
 
 if (empty($nome)) {
-    header('Location: ../msg/msgErro.html'); // ou exibir uma mensagem de erro simples
+    header('Location: ../msg/msgErro.html');
     exit;
 }
 
@@ -28,26 +28,20 @@ $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
   <meta charset="UTF-8">
   <title>Resultado da Pesquisa</title>
-  <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-  <script src="bootstrap/js/popper.min.js"></script>
-  <script src="bootstrap/js/bootstrap.js"></script>
-  <script src="bootstrap/js/jquery.min.js"></script>
+  <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+  <script src="../bootstrap/js/popper.min.js"></script>
+  <script src="../bootstrap/js/bootstrap.js"></script>
+  <script src="../bootstrap/js/jquery.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
       $(function () {
-        $("#menu").load("navbar.html");
+        $("#menu").load("../navbar/navbar.html");
       });
     });
   </script>
 </head>
 
-<style>
-    body {
-      background-color: black;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
-  </style>
+
 <body style="font-family: sans-serif; text-align: center; margin-top: 10px;">
       <div class="container"; id="menu"></div>
   <h2>Resultado da Pesquisa</h2>
@@ -74,11 +68,19 @@ $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </tr>
       <?php endforeach; ?>
     </table>
-    <div class="container"><a href="../index.html" class="btn btn-primary">Voltar para o Início</a></div>
+    <div class="container"><a href="../index.html" class="btn btn-secondary" style="margin-top: 5%;">Voltar para o Início</a></div>
   <?php else: ?>
     <p>Nenhum cliente encontrado com esse nome.</p>
-    <a href="../index.html" class="btn btn-primary">Voltar para o Início</a>
+    <a href="../index.html" class="btn btn-secondary" style="margin-top: 5%;">Voltar para o Início</a>
   <?php endif; ?>
   </div>
 </body>
 </html>
+
+<style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+  </style>

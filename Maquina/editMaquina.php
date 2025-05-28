@@ -32,22 +32,28 @@ try {
 
 <!DOCTYPE html>
 <html lang="pt-br">
-<div class="container"><a href="../index.html" class="btn btn-primary">Voltar para o Início</a></div>
+
 <head>
   <meta charset="UTF-8">
   <title>Editar Maquina</title>
-  <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-  <script src="bootstrap/js/popper.min.js"></script>
-  <script src="bootstrap/js/bootstrap.js"></script>
-  <script src="bootstrap/js/jquery.min.js"></script>
+    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+  <script src="../bootstrap/js/popper.min.js"></script>
+  <script src="../bootstrap/js/bootstrap.js"></script>
+  <script src="../bootstrap/js/jquery.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
       $(function () {
-        $("#menu").load("navbar.html");
+        $("#menu").load("../navbar/navbar.html");
       });
     });
   </script>
 </head>
+
+
+<body style="font-family: sans-serif; text-align: center; margin-top: 10px;">
+      <div class="container"; id="menu"></div>
+      <div class="container"><a href="../index.html" class="btn btn-secondary" style="margin-top: 5%;">Voltar para o Início</a></div></body>
+</html>
 
 <style>
     body {
@@ -56,7 +62,3 @@ try {
       font-family: Arial, sans-serif;
     }
   </style>
-<body style="font-family: sans-serif; text-align: center; margin-top: 10px;">
-      <div class="container"; id="menu"></div>
-</body>
-</html>

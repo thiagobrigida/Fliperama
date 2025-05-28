@@ -1,12 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Adicionar Cliente</title>
+  <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+  <script src="../bootstrap/js/popper.min.js"></script>
+  <script src="../bootstrap/js/bootstrap.js"></script>
+  <script src="../bootstrap/js/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $(function () {
+        $("#menu").load("../navbar/navbar.html");
+      });
+    });
+  </script>
+</head>
+
+<body style="font-family: sans-serif; text-align: center; margin-top: 10px;">
+      <div class="container"; id="menu"></div>
+</body>
+</html>
+
+
+<style>
+    body {
+      background-color: gray;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+
 <?php
 require_once '../init.php';
 
-// Recebendo os dados do formulário
 $nome = isset($_POST['nome']) ? $_POST['nome'] : '';
 $data_nascimento = isset($_POST['data_nascimento']) ? $_POST['data_nascimento'] : '';
 $telefone = isset($_POST['telefone']) ? $_POST['telefone'] : '';
 
-// Validação simples
 if (empty($nome) || empty($data_nascimento) || empty($telefone)) {
     echo "Preencha todos os campos!";
     exit;
@@ -32,33 +63,3 @@ try {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-  <meta charset="UTF-8">
-  <title>Adicionar Cliente</title>
-  <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-  <script src="bootstrap/js/popper.min.js"></script>
-  <script src="bootstrap/js/bootstrap.js"></script>
-  <script src="bootstrap/js/jquery.min.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $(function () {
-        $("#menu").load("navbar.html");
-      });
-    });
-  </script>
-</head>
-
-<style>
-    body {
-      background-color: gray;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
-  </style>
-<body style="font-family: sans-serif; text-align: center; margin-top: 10px;">
-      <div class="container"; id="menu"></div>
-</body>
-</html>

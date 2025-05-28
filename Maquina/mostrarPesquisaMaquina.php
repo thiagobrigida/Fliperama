@@ -29,26 +29,20 @@ $maquinas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
   <meta charset="UTF-8">
   <title>Resultado da Pesquisa</title>
-  <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-  <script src="bootstrap/js/popper.min.js"></script>
-  <script src="bootstrap/js/bootstrap.js"></script>
-  <script src="bootstrap/js/jquery.min.js"></script>
+    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+  <script src="../bootstrap/js/popper.min.js"></script>
+  <script src="../bootstrap/js/bootstrap.js"></script>
+  <script src="../bootstrap/js/jquery.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
       $(function () {
-        $("#menu").load("navbar.html");
+        $("#menu").load("../navbar/navbar.html");
       });
     });
   </script>
 </head>
 
-<style>
-    body {
-      background-color: black;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
-  </style>
+
 <body style="font-family: sans-serif; text-align: center; margin-top: 10px;">
       <div class="container"; id="menu"></div>
   <h2>Resultado da Pesquisa de Máquinas</h2>
@@ -78,6 +72,14 @@ $maquinas = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <?php else: ?>
     <p>Nenhuma máquina encontrada com esse número de série.</p>
   <?php endif; ?>
-       <div class="container"><a href="../index.html" class="btn btn-primary">Voltar para o Início</a></div>
+       <div class="container"><a href="../index.html" class="btn btn-secondary" style="margin-top: 5%;">Voltar para o Início</a></div>
 </body>
 </html>
+
+<style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+  </style>
